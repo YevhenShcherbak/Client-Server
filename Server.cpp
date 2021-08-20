@@ -3,6 +3,7 @@
 #include <netinet/in.h>
 #include <iostream>
 #include <unistd.h>
+#include <string>
 
 #define BUF_SIZE 4096
 
