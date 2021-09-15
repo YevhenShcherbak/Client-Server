@@ -1,17 +1,22 @@
-#include <sys/mman.h>
-#include <fcntl.h>
-#include <string>
 #include <iostream>
+#include <sys/mman.h>
+#include <cstring>
+#include <unistd.h>
+#include <fcntl.h>
 
-#ifndef Shm.hpp
 #define BUF_SIZE 4096
 #define MEMORY_NAME "Shm Client-Server"
 
 class Shm
 {
-public:
-    Shm();
-    ~Shm();
-}
+private:
+    char *addr;
 
-#endif
+public:
+    int shm;
+    int mode = O_CREAT;
+    Shm(std::string memoryName);
+    ~Shm();
+    bool shm_write(char *message);
+    const char *shm_read();
+};
